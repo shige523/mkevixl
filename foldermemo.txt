@@ -1,0 +1,11 @@
+・コマンドで使用できること
+・指定した名称でExcelのファイルを新規作成すること
+・指定したシート名が追加されていること
+・シート名は複数指定できること
+・指定したシート名が追加されていること
+
+
+E:\DEVELOP\PYTHON\MKEVIXL\MKEVIXL
+    core.py         --エントリーポイント
+    excel_handler.py--excelファイルの処理
+    __init__.py     --pkg初期化
