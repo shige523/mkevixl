@@ -1,27 +1,54 @@
 import unittest
 import pathlib
+import openpyxl
 
 
-class MakeNewWorkBookTest(unittest.TestCase):
-    def tearDown(self):
-        # テスト用のファイルを削除
-        file = pathlib.Path("test.xlsx")
-        if file.exists():
-            file.unlink()
+class make_new_workbook_nameTest(unittest.TestCase):
+    def test_no_extension(self):
+        from mkevixl.excel_handler import make_new_workbook_name
 
-    def test_returnfilename(self):
-        from mkevixl.excel_handler import makeNewWorkBook
+        self.assertEqual(make_new_workbook_name("test"), "test.xlsx")
 
-        self.assertEqual(makeNewWorkBook("test"), "test.xlsx")
+    def test_extension(self):
+        from mkevixl.excel_handler import make_new_workbook_name
 
-    def test_exist_excelfile(self):
-        from mkevixl.excel_handler import makeNewWorkBook
+        self.assertEqual(make_new_workbook_name("test.xlsx"), "test.xlsx")
 
-        makeNewWorkBook("test.xlsx")
-        self.assertTrue(pathlib.Path("test.xlsx").exists())
+    def test_wrong_extension(self):
+        from mkevixl.excel_handler import make_new_workbook_name
 
-    def test_wrongfilename(self):
-        from mkevixl.excel_handler import makeNewWorkBook
+        self.assertTrue(make_new_workbook_name("test.txt"), "test.xlsx")
 
-        makeNewWorkBook("test.txt")
-        self.assertTrue(pathlib.Path("test.xlsx").exists())
+
+class AddWorkSheetTest(unittest.TestCase):
+    # def setUp(self):
+    #     wb = openpyxl.Workbook()
+    #     wb.save("AddWorkSheetTest.xlsx")
+
+    # def tearDown(self):
+    #     # テスト用のファイルを削除
+    #     file = pathlib.Path("AddWorkSheetTest.xlsx")
+    #     if file.exists():
+    #         file.unlink()
+
+    def test_makefile_mode1(self):
+        filename = "AddWorkSheetTest_1.xlsx"
+        file = pathlib.Path(filename)
+        sheetcount = 1
+        mode = 1
+        sheetnames = ["abc", "dge"]
+        from mkevixl.excel_handler import make_file
+
+        make_file(mode, filename, sheetcount, sheetnames)
+        self.assertTrue(file.exists())
+
+    def test_makefile_mode2(self):
+        filename = "AddWorkSheetTest_2.xlsx"
+        file = pathlib.Path(filename)
+        sheetcount = 10
+        mode = 2
+        sheetnames = 5
+        from mkevixl.excel_handler import make_file
+
+        make_file(mode, filename, sheetcount, sheetnames)
+        self.assertTrue(file.exists())

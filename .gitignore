@@ -158,9 +158,12 @@ dmypy.json
 cython_debug/
 
 # vscode
-.code-workspace
+*.code-workspace
 
 # tempcode
 tempCodeRunnerFile.py
+
+#testfile
+*.xlsx
 
 # End of https://www.toptal.com/developers/gitignore/api/python,git
