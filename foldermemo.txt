@@ -11,3 +11,13 @@ E:\DEVELOP\PYTHON\MKEVIXL\MKEVIXL
     core.py         --エントリーポイント
     excel_handler.py--excelファイルの処理
     __init__.py     --pkg初期化
+
+#memo
+clickについて
+    # https://blog.amedama.jp/entry/2015/10/14/232045
+    argumentで渡せる引数はtupleのみ。変更不可と考える。
+
+venvで作成した仮想環境のpipのバージョンが低い
+    venvで入ってくるpipのバージョンはインストールしたpythonに依存する
+    python3.9.4だと20.xという風に決まっている。
+    大元を最新化しても無理。

@@ -59,7 +59,7 @@ class ExcelSheetByCount:
     def execute(self):
 
         sheetname = self.start
-        print(sheetname + 1)
+        # print(sheetname + 1)
         wb = Workbook()
         for count in range(0, int(self.sheetcount)):
             wb.create_sheet(str(sheetname))
@@ -70,22 +70,7 @@ class ExcelSheetByCount:
 
 
 def make_file(filename, start, sheetcount):
-    # if mode == 1:
-    #     # print("mode 1")
-    #     return ExcelSheetByName(make_new_workbook_name(filename), sheetnames).execute()
-    # elif mode == 2:
-    # print("mode 2")
+
     return ExcelSheetByCount(
         make_new_workbook_name(filename), start, sheetcount
     ).execute()
-
-
-if __name__ == "__main__":
-    # sheetlist = ["aiueo", "12345"]
-    # test = ExcelSheetByName("test.xlsx", sheetlist)
-    # test.add_work_sheet()
-
-    # test = ExcelSheetByCount("countbyfile.xlsx", 10, 23)
-    # test.execute()
-    sheet = 10
-    make_file(1, "test.xlsx", 10, sheet)

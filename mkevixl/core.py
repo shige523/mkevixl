@@ -20,19 +20,12 @@ from mkevixl.excel_handler import make_file
     "--sheetcount", "-sh", default=1, show_default=True, type=int, help="モード2用:追加するシート数"
 )
 def cli(filename, start, sheetcount):
-    # https://blog.amedama.jp/entry/2015/10/14/232045
+
     # エビデンス用Excelファイル生成ツール
-    # click.echo(arg_name, filename)
-    # print(arg_name, filename)
-    # if len(sheetnames) == 0:
-    #     sheetnames = sheetnames + ("new")
-    print(filename, start, sheetcount)
     if mkevixl(filename, start, sheetcount) == False:
         return print("処理失敗")
     else:
         return print("処理完了")
-    # 動確用
-    # click.echo(filename)
 
 
 def mkevixl(filename, start, sheetcount):
