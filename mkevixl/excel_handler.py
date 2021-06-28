@@ -15,9 +15,6 @@ def make_new_workbook_name(filename):
         # 拡張子がxlsx以外だったら強制的に変更する
         filename = os.path.splitext(filename)[0] + ".xlsx"
 
-    # wb = Workbook()
-    # wb.save(filename)
-
     return filename
 
 
@@ -47,40 +44,40 @@ class ExcelSheetByName:
 class ExcelSheetByCount:
     """[指定した数字名と数だけシートを追加してExcelファイル保存]"""
 
-    def __init__(self, filename, sheetcount, start):
+    def __init__(self, filename, start, sheetcount):
         """[summary]
 
         Args:
-            filename ([string]): [excelfilename]
-            sheetcount ([int]): [add sheet count]
-            start ([int]): [startsheetname]
+            filename ([string]): [ファイル名]
+            start ([int]): [開始値]
+            sheetcount ([int]): [追加シート数]
         """
         self.filename = filename
-        self.sheetcount = sheetcount
         self.start = start
+        self.sheetcount = sheetcount
 
     def execute(self):
 
         sheetname = self.start
+        print(sheetname + 1)
         wb = Workbook()
-        for count in range(0, self.sheetcount):
+        for count in range(0, int(self.sheetcount)):
             wb.create_sheet(str(sheetname))
-            sheetname = sheetname + 1
+            sheetname += 1
         wb.remove(wb["Sheet"])
 
         return wb.save(self.filename)
 
 
-def sheettype():
-    pass
-
-
-def make_file(mode, filename, sheetcount, sheetnames):
-    if mode == 1:
-        print("mode 1")
-        return ExcelSheetByName(filename, sheetnames).execute()
-    elif mode == 2:
-        return ExcelSheetByCount(filename, sheetcount, sheetnames).execute()
+def make_file(filename, start, sheetcount):
+    # if mode == 1:
+    #     # print("mode 1")
+    #     return ExcelSheetByName(make_new_workbook_name(filename), sheetnames).execute()
+    # elif mode == 2:
+    # print("mode 2")
+    return ExcelSheetByCount(
+        make_new_workbook_name(filename), start, sheetcount
+    ).execute()
 
 
 if __name__ == "__main__":

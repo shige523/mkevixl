@@ -21,16 +21,7 @@ class make_new_workbook_nameTest(unittest.TestCase):
 
 
 class AddWorkSheetTest(unittest.TestCase):
-    # def setUp(self):
-    #     wb = openpyxl.Workbook()
-    #     wb.save("AddWorkSheetTest.xlsx")
-
-    # def tearDown(self):
-    #     # テスト用のファイルを削除
-    #     file = pathlib.Path("AddWorkSheetTest.xlsx")
-    #     if file.exists():
-    #         file.unlink()
-
+    @unittest.skip("機能削除")
     def test_makefile_mode1(self):
         filename = "AddWorkSheetTest_1.xlsx"
         file = pathlib.Path(filename)
@@ -43,12 +34,11 @@ class AddWorkSheetTest(unittest.TestCase):
         self.assertTrue(file.exists())
 
     def test_makefile_mode2(self):
-        filename = "AddWorkSheetTest_2.xlsx"
+        filename = "AddWorkSheetTest.xlsx"
         file = pathlib.Path(filename)
         sheetcount = 10
-        mode = 2
-        sheetnames = 5
+        start = 5
         from mkevixl.excel_handler import make_file
 
-        make_file(mode, filename, sheetcount, sheetnames)
+        make_file(filename, start, sheetcount)
         self.assertTrue(file.exists())
